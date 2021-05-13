@@ -4,21 +4,24 @@ using UnityEngine;
 
 public class Object_Controller : MonoBehaviour
 {
+    //private GameObject go;
+    //private Random_Spawn rs;
+    Random_Spawn rs;
 
     private float startPosX;
     private float startPosY;
     private bool isBeingHeld = false;
     private bool touchedOnce = false;
 
-
     private Rigidbody2D rb;
 
     private void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
+        rs = GameObject.FindGameObjectWithTag("spawner").GetComponent<Random_Spawn>();
+
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (touchedOnce == true)
@@ -35,12 +38,8 @@ public class Object_Controller : MonoBehaviour
                 mousePos = Camera.main.ScreenToWorldPoint(mousePos);
 
                 this.gameObject.transform.localPosition = new Vector3(mousePos.x - startPosX, 4, 0);
-                //this.gameObject.transform.localPosition = new Vector3(mousePos.x - startPosX, mousePos.y - startPosY, 0);
 
         }
-        //rb.AddForce(-transform.forward * 500f);
-        //rb.velocity = rb.velocity * .03f;
-
         
     }
 
@@ -49,7 +48,6 @@ public class Object_Controller : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            
 
             Vector3 mousePos;
 
@@ -70,9 +68,8 @@ public class Object_Controller : MonoBehaviour
         isBeingHeld = false;
         rb.isKinematic = false;
         rb.angularDrag = 2;
-
-        //rb.mass = 1000;
         touchedOnce = true;
 
+        rs.randomSpawn();
     }
 }
