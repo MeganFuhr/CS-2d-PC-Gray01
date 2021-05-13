@@ -70,6 +70,9 @@ public class Object_Controller : MonoBehaviour
         rb.angularDrag = 2;
         touchedOnce = true;
 
-        rs.randomSpawn();
+        if (isBeingHeld == false)
+        {
+            rs.randomSpawn();
+        }
     }
 }
