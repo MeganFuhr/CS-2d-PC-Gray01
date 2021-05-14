@@ -18,7 +18,6 @@ public class Random_Spawn : MonoBehaviour
     public void randomSpawn()
     {
         whatToSpawn = Random.Range(1, 4);
-        Debug.Log(whatToSpawn);
 
         switch (whatToSpawn)
         {
