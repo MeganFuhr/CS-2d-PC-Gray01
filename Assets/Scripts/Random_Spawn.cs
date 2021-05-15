@@ -23,13 +23,13 @@ public class Random_Spawn : MonoBehaviour
         {
            
             case 1:
-                Instantiate(prefab1, this.gameObject.transform.localPosition = new Vector3(0, 4, 0), Quaternion.identity);
+                Instantiate(prefab1, this.gameObject.transform.localPosition = new Vector3(0, 4, 0), Quaternion.Euler (0,0,Random.Range(0,360)));
                 break;
             case 2:
-                Instantiate(prefab2, this.gameObject.transform.localPosition = new Vector3(0, 4, 0), Quaternion.identity);
+                Instantiate(prefab2, this.gameObject.transform.localPosition = new Vector3(0, 4, 0), Quaternion.Euler(0, 0, Random.Range(0, 360)));
                 break;
             case 3:
-                Instantiate(prefab3, this.gameObject.transform.localPosition = new Vector3(0, 4, 0), Quaternion.identity);
+                Instantiate(prefab3, this.gameObject.transform.localPosition = new Vector3(0, 4, 0), Quaternion.Euler(0, 0, Random.Range(0, 360)));
                 break;
         }
 
