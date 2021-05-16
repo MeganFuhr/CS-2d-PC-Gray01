@@ -52,14 +52,8 @@ public class Random_Spawn : MonoBehaviour
     public void DrawLine(Vector3 start, Vector3 end)
     {
         lineRenderer = GetComponent<LineRenderer>();
-
-        //Get origin position of spawned object
-        //start = go.transform.position;
-        //Debug.Log("IN Updated" + origin.name);        
-
-
-        
         lineRenderer.SetPosition(0, start);
+        end.x = start.x;
         lineRenderer.SetPosition(1, end);
     }
 
