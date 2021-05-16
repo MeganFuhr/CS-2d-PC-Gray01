@@ -6,34 +6,61 @@ public class Random_Spawn : MonoBehaviour
 {
     public GameObject prefab1, prefab2, prefab3;
     public int whatToSpawn;
+    public GameObject go;
 
+    private LineRenderer lineRenderer;
+    private float dist;
 
+    private Vector3 start;
+    private Vector3 end;
 
 
     private void Start()
-    {    
+    {
         whatToSpawn = Random.Range(1, 4);
-        randomSpawn();
+        RandomSpawn();
+
     }
 
-    public void randomSpawn()
+
+    public void RandomSpawn()
     {
         whatToSpawn = Random.Range(1, 4);
 
         switch (whatToSpawn)
         {
-           
+
             case 1:
-                Instantiate(prefab1, this.gameObject.transform.localPosition = new Vector3(0, 4, 0), Quaternion.Euler (0,0,Random.Range(0,360)));
+                go = Instantiate(prefab1, this.gameObject.transform.localPosition = new Vector3(0, 4, 0), Quaternion.Euler(0, 0, Random.Range(0, 360)));
+                Debug.Log(go.GetComponent<Collider2D>().bounds.size);
+             
                 break;
             case 2:
-                Instantiate(prefab2, this.gameObject.transform.localPosition = new Vector3(0, 4, 0), Quaternion.Euler(0, 0, Random.Range(0, 360)));
+                go = Instantiate(prefab2, this.gameObject.transform.localPosition = new Vector3(0, 4, 0), Quaternion.Euler(0, 0, Random.Range(0, 360)));
+                Debug.Log(go.GetComponent<Collider2D>().bounds.size);
+               
                 break;
             case 3:
-                Instantiate(prefab3, this.gameObject.transform.localPosition = new Vector3(0, 4, 0), Quaternion.Euler(0, 0, Random.Range(0, 360)));
+                go = Instantiate(prefab3, this.gameObject.transform.localPosition = new Vector3(0, 4, 0), Quaternion.Euler(0, 0, Random.Range(0, 360)));
+                Debug.Log(go.GetComponent<Collider2D>().bounds.size);
+                
                 break;
         }
 
+    }
+
+    public void DrawLine(Vector3 start, Vector3 end)
+    {
+        lineRenderer = GetComponent<LineRenderer>();
+
+        //Get origin position of spawned object
+        //start = go.transform.position;
+        //Debug.Log("IN Updated" + origin.name);        
+
+
+        
+        lineRenderer.SetPosition(0, start);
+        lineRenderer.SetPosition(1, end);
     }
 
 }
