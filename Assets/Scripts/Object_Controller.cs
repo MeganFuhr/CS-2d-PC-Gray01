@@ -13,6 +13,7 @@ public class Object_Controller : MonoBehaviour
 
 
     private Rigidbody2D rb;
+    private Collider2D col;
 
     private void Start()
     {
@@ -39,7 +40,7 @@ public class Object_Controller : MonoBehaviour
                 this.gameObject.transform.localPosition = new Vector3(mousePos.x - startPosX, 4, 0);
 
         }
-
+        
 
     }
 
@@ -75,5 +76,17 @@ public class Object_Controller : MonoBehaviour
         rb.angularDrag = 2;
         touchedOnce = true;
 
+        col = GetComponent<Collider2D>();
+        col.isTrigger = false;
+
+        WaitSeconds();
+
+
+    }
+
+    IEnumerator WaitSeconds()
+    {
+        yield return new WaitForSeconds(1f);
+        col.isTrigger = true;
     }
 }
