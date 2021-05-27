@@ -8,7 +8,7 @@ public class UI_YouLost : MonoBehaviour
 
     public void PlayGame()
     {
-        SceneManager.GetSceneByBuildIndex(1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     public void QuitGame()
     {
