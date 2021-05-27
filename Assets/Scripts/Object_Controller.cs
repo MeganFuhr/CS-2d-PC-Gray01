@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Object_Controller : MonoBehaviour
 {
@@ -15,6 +16,9 @@ public class Object_Controller : MonoBehaviour
     private Vector3 end;
     private LineRenderer lr;
 
+    private Canvas youLost;
+    private GameObject go;
+
     private Rigidbody2D rb;
     private Collider2D col;
 
@@ -23,6 +27,8 @@ public class Object_Controller : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody2D>();
         rs = GameObject.FindGameObjectWithTag("spawner").GetComponent<Random_Spawn>();
         lr = GameObject.Find("/Spawner").GetComponent<LineRenderer>();
+        go = GameObject.Find("/UI");
+        youLost = go.transform.GetChild(0).gameObject.GetComponent<Canvas>();
 
     }
 
@@ -36,14 +42,12 @@ public class Object_Controller : MonoBehaviour
 
         if (isBeingHeld == true)
         {
+            Vector3 mousePos;
+            mousePos = Input.mousePosition;
+            mousePos = Camera.main.ScreenToWorldPoint(mousePos);
 
-                Vector3 mousePos;
-                mousePos = Input.mousePosition;
-                mousePos = Camera.main.ScreenToWorldPoint(mousePos);
-
-                this.gameObject.transform.localPosition = new Vector3(mousePos.x - startPosX, 4, 0);
-                rs.DrawLine(this.gameObject.transform.localPosition = new Vector3(mousePos.x - startPosX, 4, 0), new Vector3(mousePos.x + startPosX, end.y, 0));
-
+            this.gameObject.transform.localPosition = new Vector3(mousePos.x - startPosX, 4, 0);
+            rs.DrawLine(this.gameObject.transform.localPosition = new Vector3(mousePos.x - startPosX, 4, 0), new Vector3(mousePos.x + startPosX, end.y, 0));
 
         }
 
@@ -51,8 +55,14 @@ public class Object_Controller : MonoBehaviour
 
     private void OnMouseDown()
     {
+        if (youLost.enabled)
+        {
+            return;
+        }
+
         if (Input.GetMouseButtonDown(0))
         {
+
             if (touchedOnce == true)
             {
                 return;
@@ -79,6 +89,11 @@ public class Object_Controller : MonoBehaviour
 
     private void OnMouseUp()
     {
+        if (youLost.enabled)
+        {
+            return;
+        }
+
         isBeingHeld = false;
 
         if (isBeingHeld == false && touchedOnce == false)
