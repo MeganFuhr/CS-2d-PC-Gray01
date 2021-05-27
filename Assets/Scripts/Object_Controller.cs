@@ -34,7 +34,7 @@ public class Object_Controller : MonoBehaviour
             return;
         }
 
-        if (isBeingHeld == true )
+        if (isBeingHeld == true)
         {
 
                 Vector3 mousePos;
@@ -53,20 +53,26 @@ public class Object_Controller : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            lr.enabled = true;
+            if (touchedOnce == true)
+            {
+                return;
+            }
+            else
+            {
+                lr.enabled = true;
 
-            end = GameObject.Find("Platform").transform.position;
-            endEnd = end.x;
-            Vector3 mousePos;
-            mousePos = Input.mousePosition;
-            mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+                end = GameObject.Find("Platform").transform.position;
+                endEnd = end.x;
+                Vector3 mousePos;
+                mousePos = Input.mousePosition;
+                mousePos = Camera.main.ScreenToWorldPoint(mousePos);
 
 
-            startPosX = mousePos.x - this.transform.localPosition.x;
-            startPosY = mousePos.y - this.transform.localPosition.y;
+                startPosX = mousePos.x - this.transform.localPosition.x;
+                startPosY = mousePos.y - this.transform.localPosition.y;
 
-            isBeingHeld = true;
-
+                isBeingHeld = true;
+            }
             
         }
     }
