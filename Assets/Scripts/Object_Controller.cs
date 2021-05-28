@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class Object_Controller : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class Object_Controller : MonoBehaviour
 
     private Canvas youLost;
     private GameObject go;
+    private GameObject parentCounter;
+    private float OC_currentTime;
 
     private Rigidbody2D rb;
     private Collider2D col;
@@ -30,16 +33,27 @@ public class Object_Controller : MonoBehaviour
         go = GameObject.Find("/UI");
         youLost = go.transform.GetChild(0).gameObject.GetComponent<Canvas>();
 
+        parentCounter = GameObject.Find("/Counter");
+
     }
 
     void Update()
     {
+        OC_currentTime = parentCounter.GetComponent<Counter>().currentTime;
+        Debug.Log(OC_currentTime);
+        //Debug.Log(counter.currentTime);
 
         if (touchedOnce == true)
         {
             return;
         }
+        else if(OC_currentTime <= 0 || youLost.enabled)
+        {
+            OC_currentTime = 0;
+            WaitSeconds();
+            youLost.enabled = true;
 
+        }
         if (isBeingHeld == true)
         {
             Vector3 mousePos;
@@ -67,7 +81,7 @@ public class Object_Controller : MonoBehaviour
             {
                 return;
             }
-            else
+                else
             {
                 lr.enabled = true;
 
