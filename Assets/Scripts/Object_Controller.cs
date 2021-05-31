@@ -39,6 +39,13 @@ public class Object_Controller : MonoBehaviour
 
     void Update()
     {
+
+        if (youLost.enabled)
+        {
+            Destroy(rs.go);
+            Destroy(lr);
+            return;
+        }
         OC_currentTime = parentCounter.GetComponent<Counter>().currentTime;
         Debug.Log(OC_currentTime);
         //Debug.Log(counter.currentTime);
@@ -69,13 +76,11 @@ public class Object_Controller : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (youLost.enabled)
-        {
-            return;
-        }
-
+  
         if (Input.GetMouseButtonDown(0))
         {
+
+
 
             if (touchedOnce == true)
             {
@@ -105,6 +110,8 @@ public class Object_Controller : MonoBehaviour
     {
         if (youLost.enabled)
         {
+            //Destroy(rs.go);
+            //Destroy(lr);
             return;
         }
 
