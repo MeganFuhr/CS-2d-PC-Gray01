@@ -17,9 +17,7 @@ public class Random_Spawn : MonoBehaviour
 
     private void Start()
     {
-        whatToSpawn = Random.Range(1, 4);
         RandomSpawn();
-
     }
 
 

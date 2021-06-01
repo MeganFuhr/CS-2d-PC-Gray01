@@ -80,17 +80,15 @@ public class Object_Controller : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
 
-
-
             if (touchedOnce == true)
             {
                 return;
             }
-                else
+            else
             {
                 lr.enabled = true;
 
-                end = GameObject.Find("Platform").transform.position;
+                end = GameObject.Find("Platform_Spawner").transform.position;
                 endEnd = end.x;
                 Vector3 mousePos;
                 mousePos = Input.mousePosition;
