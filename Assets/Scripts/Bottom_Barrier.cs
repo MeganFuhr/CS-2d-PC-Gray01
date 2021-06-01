@@ -8,6 +8,7 @@ public class Bottom_Barrier : MonoBehaviour
     private Canvas youLost;
     private GameObject go;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,8 +22,9 @@ public class Bottom_Barrier : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter2D(Collider2D bottomCol)
+    private void OnTriggerEnter2D(Collider2D other)
     {
+        Destroy(other.gameObject);
         youLost.enabled = true;
     }
 
