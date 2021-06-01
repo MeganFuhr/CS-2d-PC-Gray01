@@ -27,18 +27,12 @@ public class Platform_Spawner : MonoBehaviour
 
             case 1:
                 go = Instantiate(cat1, this.gameObject.transform.localPosition = platformPosition, Quaternion.Euler(0, 0, 0));
-                Debug.Log(go.GetComponent<Collider2D>().bounds.size);
-
                 break;
             case 2:
                 go = Instantiate(cat2, this.gameObject.transform.localPosition = platformPosition, Quaternion.Euler(0, 0, 0));
-                Debug.Log(go.GetComponent<Collider2D>().bounds.size);
-
                 break;
             case 3:
                 go = Instantiate(cat3, this.gameObject.transform.localPosition = platformPosition, Quaternion.Euler(0, 0, 0));
-                Debug.Log(go.GetComponent<Collider2D>().bounds.size);
-
                 break;
         }
 

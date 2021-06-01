@@ -12,6 +12,7 @@ public class Object_Controller : MonoBehaviour
     private float startPosY;
     private float startStart;
     private float endEnd;
+    private bool gameOver = false;
     private bool isBeingHeld = false;
     private bool touchedOnce = false;
     private Vector3 end;
@@ -19,6 +20,7 @@ public class Object_Controller : MonoBehaviour
 
     private Canvas youLost;
     private GameObject go;
+    private GameObject [] endGO;
     private GameObject parentCounter;
     private float OC_currentTime;
 
@@ -42,24 +44,25 @@ public class Object_Controller : MonoBehaviour
 
         if (youLost.enabled)
         {
-            Destroy(rs.go);
-            Destroy(lr);
-            return;
+           // Destroy(rs.go);
+            //Destroy(lr);
+            //CountScore();
+            //return;
         }
         OC_currentTime = parentCounter.GetComponent<Counter>().currentTime;
-        Debug.Log(OC_currentTime);
-        //Debug.Log(counter.currentTime);
 
         if (touchedOnce == true)
         {
             return;
         }
-        else if(OC_currentTime <= 0 || youLost.enabled)
+        if (OC_currentTime <= 0 || youLost.enabled)
         {
             OC_currentTime = 0;
-            WaitSeconds();
+          
             youLost.enabled = true;
-
+            Destroy(rs.go);
+            Destroy(lr);
+            CountScore();
         }
         if (isBeingHeld == true)
         {
@@ -76,7 +79,7 @@ public class Object_Controller : MonoBehaviour
 
     private void OnMouseDown()
     {
-  
+
         if (Input.GetMouseButtonDown(0))
         {
 
@@ -100,7 +103,7 @@ public class Object_Controller : MonoBehaviour
 
                 isBeingHeld = true;
             }
-            
+
         }
     }
 
@@ -108,8 +111,7 @@ public class Object_Controller : MonoBehaviour
     {
         if (youLost.enabled)
         {
-            //Destroy(rs.go);
-            //Destroy(lr);
+
             return;
         }
 
@@ -131,14 +133,32 @@ public class Object_Controller : MonoBehaviour
 
         lr.enabled = false;
 
-        WaitSeconds();
-
-
+        WaitSeconds(1f);
     }
 
-    IEnumerator WaitSeconds()
+    IEnumerator WaitSeconds(float num)
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(num);
         col.isTrigger = true;
+    }
+
+    private void CountScore()
+    {
+        Vector2 checkVelocity;
+        Vector2 zeroVelocity = new Vector2(0f, 0f);
+        endGO = GameObject.FindGameObjectsWithTag("object");
+        
+        foreach (GameObject obj in endGO)
+        {
+            checkVelocity = obj.GetComponent<Rigidbody2D>().velocity;
+
+            if (checkVelocity == zeroVelocity)
+            {
+                obj.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+            }     
+        }
+        WaitSeconds(3);
+        Debug.Log(endGO.Length - 1);
+
     }
 }
