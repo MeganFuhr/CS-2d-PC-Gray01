@@ -7,6 +7,7 @@ public class Bottom_Barrier : MonoBehaviour
 
     private Canvas youLost;
     private GameObject go;
+    public bool gameOver;
 
 
     // Start is called before the first frame update
@@ -26,6 +27,7 @@ public class Bottom_Barrier : MonoBehaviour
     {
         Destroy(other.gameObject);
         youLost.enabled = true;
+        gameOver = true;
     }
 
 }
