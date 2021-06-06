@@ -8,6 +8,7 @@ public class Object_Controller : MonoBehaviour
 {
     Random_Spawn rs;
     Bottom_Barrier GameOver;
+    FinalScore FinalScore;
 
     private bool endOfGame;
     public int value;
@@ -38,6 +39,7 @@ public class Object_Controller : MonoBehaviour
         rs = GameObject.FindGameObjectWithTag("spawner").GetComponent<Random_Spawn>();
         lr = GameObject.Find("/Spawner").GetComponent<LineRenderer>();
         go = GameObject.Find("/UI");
+        FinalScore = GameObject.Find("/Score").GetComponent<FinalScore>();
         youLost = go.transform.GetChild(0).gameObject.GetComponent<Canvas>();
         GameOver = GameObject.Find("/Bottom_Barrier").GetComponent<Bottom_Barrier>();
         endOfGame = GameOver.gameOver;
@@ -68,7 +70,7 @@ public class Object_Controller : MonoBehaviour
 
             Destroy(rs.go);
             Destroy(lr);
-            CountScore();
+            FinalScore.CountFinalScore();
         }
         if (isBeingHeld == true)
         {
@@ -139,39 +141,39 @@ public class Object_Controller : MonoBehaviour
 
         lr.enabled = false;
     }
-    private void CountScore()
-    {
-        Vector2 checkVelocity;
-        Vector2 zeroVelocity = new Vector2(0f, 0f);
-        endGO = GameObject.FindGameObjectsWithTag("object");
-        int i = 0;
-        endScore = 0;
-        Debug.Log(endGO.Length);
+    //private void CountScore()
+    //{
+    //    Vector2 checkVelocity;
+    //    Vector2 zeroVelocity = new Vector2(0f, 0f);
+    //    endGO = GameObject.FindGameObjectsWithTag("object");
+    //    int i = 0;
+    //    endScore = 0;
+    //    Debug.Log(endGO.Length);
         
 
-        foreach (GameObject obj in endGO)
-        {
-            //StartCoroutine(CountTheObjectsWithFlair(obj));
-            endScore += endGO[i].GetComponent<Object_Controller>().value;
-            ps = endGO[i].GetComponentInChildren<ParticleSystem>();
-            emission = ps.emission;
-            emission.enabled = true;
-            ps.Play();
+    //    foreach (GameObject obj in endGO)
+    //    {
+    //        //StartCoroutine(CountTheObjectsWithFlair(obj));
+    //        endScore += endGO[i].GetComponent<Object_Controller>().value;
+    //        ps = endGO[i].GetComponentInChildren<ParticleSystem>();
+    //        emission = ps.emission;
+    //        emission.enabled = true;
+    //        ps.Play();
 
-            checkVelocity = endGO[i].GetComponent<Rigidbody2D>().velocity;
+    //        checkVelocity = endGO[i].GetComponent<Rigidbody2D>().velocity;
 
-            if (checkVelocity == zeroVelocity)
-            {
-                endGO[i].GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
-            }
-            i++;
-            if (i == endGO.Length-1)
-            {
-                endScore -= endGO[i].GetComponent<Object_Controller>().value;
-            }
-        }
+    //        if (checkVelocity == zeroVelocity)
+    //        {
+    //            endGO[i].GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+    //        }
+    //        i++;
+    //        if (i == endGO.Length-1)
+    //        {
+    //            endScore -= endGO[i].GetComponent<Object_Controller>().value;
+    //        }
+    //    }
 
-        Debug.Log("Your Score is: " + (endScore));
+    //    Debug.Log("Your Score is: " + (endScore));
 
-    }
+    //}
 }
