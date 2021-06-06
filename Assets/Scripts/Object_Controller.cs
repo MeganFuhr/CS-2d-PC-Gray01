@@ -10,6 +10,8 @@ public class Object_Controller : MonoBehaviour
     Bottom_Barrier GameOver;
     FinalScore FinalScore;
 
+    private Vector2 screenBounds;
+
     private bool endOfGame;
     public int value;
 
@@ -43,6 +45,7 @@ public class Object_Controller : MonoBehaviour
         youLost = go.transform.GetChild(0).gameObject.GetComponent<Canvas>();
         GameOver = GameObject.Find("/Bottom_Barrier").GetComponent<Bottom_Barrier>();
         endOfGame = GameOver.gameOver;
+        screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
 
         parentCounter = GameObject.Find("/Counter");
 
@@ -77,6 +80,9 @@ public class Object_Controller : MonoBehaviour
             Vector3 mousePos;
             mousePos = Input.mousePosition;
             mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+            Rect screenRect = new Rect(0, 0, Screen.width, Screen.height);
+            if (!screenRect.Contains(Input.mousePosition))
+                return;
 
             this.gameObject.transform.localPosition = new Vector3(mousePos.x - startPosX, 4, 0);
             rs.DrawLine(this.gameObject.transform.localPosition = new Vector3(mousePos.x - startPosX, 4, 0), new Vector3(mousePos.x + startPosX, end.y, 0));
@@ -102,9 +108,10 @@ public class Object_Controller : MonoBehaviour
                 end = GameObject.Find("Platform_Spawner").transform.position;
                 endEnd = end.x;
                 Vector3 mousePos;
+
+
                 mousePos = Input.mousePosition;
                 mousePos = Camera.main.ScreenToWorldPoint(mousePos);
-
 
                 startPosX = mousePos.x - this.transform.localPosition.x;
                 startPosY = mousePos.y - this.transform.localPosition.y;
@@ -141,39 +148,4 @@ public class Object_Controller : MonoBehaviour
 
         lr.enabled = false;
     }
-    //private void CountScore()
-    //{
-    //    Vector2 checkVelocity;
-    //    Vector2 zeroVelocity = new Vector2(0f, 0f);
-    //    endGO = GameObject.FindGameObjectsWithTag("object");
-    //    int i = 0;
-    //    endScore = 0;
-    //    Debug.Log(endGO.Length);
-        
-
-    //    foreach (GameObject obj in endGO)
-    //    {
-    //        //StartCoroutine(CountTheObjectsWithFlair(obj));
-    //        endScore += endGO[i].GetComponent<Object_Controller>().value;
-    //        ps = endGO[i].GetComponentInChildren<ParticleSystem>();
-    //        emission = ps.emission;
-    //        emission.enabled = true;
-    //        ps.Play();
-
-    //        checkVelocity = endGO[i].GetComponent<Rigidbody2D>().velocity;
-
-    //        if (checkVelocity == zeroVelocity)
-    //        {
-    //            endGO[i].GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
-    //        }
-    //        i++;
-    //        if (i == endGO.Length-1)
-    //        {
-    //            endScore -= endGO[i].GetComponent<Object_Controller>().value;
-    //        }
-    //    }
-
-    //    Debug.Log("Your Score is: " + (endScore));
-
-    //}
 }
