@@ -1846,7 +1846,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cat1: {fileID: 2497216103177101102, guid: 3251d7f7dabf5cf499043bf3dea64499, type: 3}
   cat2: {fileID: 2008034821144211299, guid: 9247e5ce56a8b744d9b72d55397baa1e, type: 3}
-  cat3: {fileID: 2497216103177101102, guid: 3251d7f7dabf5cf499043bf3dea64499, type: 3}
+  cat3: {fileID: 7514244196128102633, guid: 80a680fa798b81542bcc719a5585101b, type: 3}
   catToSpawn: 0
   go: {fileID: 0}
-  cat_2: {x: 0, y: 0, z: 0}
+  cat_1_position: {x: 0, y: 0, z: 0}
+  cat_2_position: {x: 0, y: 0, z: 0}
+  cat_3_position: {x: 0, y: 0, z: 0}
