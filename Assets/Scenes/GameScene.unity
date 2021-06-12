@@ -1844,8 +1844,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99f28c40098dd42489373af36b9f5f5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cat1: {fileID: 5266339218898781498, guid: 4ff597c2145a3bd43aafc03f8ed00d44, type: 3}
-  cat2: {fileID: 1403782618667810288, guid: fc223b6bf18c5d34aa023a8ef36b7a6e, type: 3}
-  cat3: {fileID: 4211782024552974581, guid: 3a1051d3d67f4964ebf4c1ad7320b9b4, type: 3}
+  cat1: {fileID: 2497216103177101102, guid: 3251d7f7dabf5cf499043bf3dea64499, type: 3}
+  cat2: {fileID: 2497216103177101102, guid: 3251d7f7dabf5cf499043bf3dea64499, type: 3}
+  cat3: {fileID: 2497216103177101102, guid: 3251d7f7dabf5cf499043bf3dea64499, type: 3}
   catToSpawn: 0
   go: {fileID: 0}
