@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Random_Spawn : MonoBehaviour
 {
-    public GameObject prefab1, prefab2, prefab3, prefab4;
+    public GameObject prefab1, prefab2, prefab3, prefab4, prefab5;
     public int whatToSpawn;
     public GameObject go;
 
@@ -23,7 +23,7 @@ public class Random_Spawn : MonoBehaviour
 
     public void RandomSpawn()
     {
-        whatToSpawn = Random.Range(1, 5);
+        whatToSpawn = Random.Range(1, 6);
 
         switch (whatToSpawn)
         {
@@ -39,6 +39,9 @@ public class Random_Spawn : MonoBehaviour
                 break;
             case 4:
                 go = Instantiate(prefab4, this.gameObject.transform.localPosition = new Vector3(0, 4, 0), Quaternion.Euler(0, 0, Random.Range(0, 360)));
+                break;
+            case 5:
+                go = Instantiate(prefab5, this.gameObject.transform.localPosition = new Vector3(0, 4, 0), Quaternion.Euler(0, 0, Random.Range(0, 360)));
                 break;
         }
 
