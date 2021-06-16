@@ -1483,7 +1483,7 @@ MonoBehaviour:
   prefab2: {fileID: 8662027653739678123, guid: 3d42e3f3270c00844bbdaa4de884bd3a, type: 3}
   prefab3: {fileID: 6449567302447800859, guid: 7dd0902daaeeb6c40945ea4b3c1dea78, type: 3}
   prefab4: {fileID: 2533212447724016731, guid: b190faa675d0e35468e659e90eb432ab, type: 3}
-  prefab5: {fileID: 251296986422775716, guid: 0ff38aaed3b6d5f4290b908d1349d80f, type: 3}
+  prefab5: {fileID: 2599464191282138417, guid: 0ff38aaed3b6d5f4290b908d1349d80f, type: 3}
   whatToSpawn: 0
   go: {fileID: 0}
 --- !u!4 &1533239937
