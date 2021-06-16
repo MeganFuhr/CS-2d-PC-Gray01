@@ -1480,8 +1480,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab1: {fileID: 5968578395545541820, guid: 5db0ac783e58ff84b8bd2cb2ebdcda45, type: 3}
-  prefab2: {fileID: 999784825298077969, guid: 1d464cf87a5c0cb4bade5a20c9b8afb7, type: 3}
-  prefab3: {fileID: 4474220695481916891, guid: 4c5cff6dc31efa7468eec98367d6ca14, type: 3}
+  prefab2: {fileID: 6995294860359433105, guid: cb083ac5d1b60a040b1e922f57ee8203, type: 3}
+  prefab3: {fileID: 7087965897129068145, guid: 9716ec9515d1ff2409c69b05812eddb3, type: 3}
   prefab4: {fileID: 502043716381835118, guid: 11869ff0b4e24094ba5a28980e57a09c, type: 3}
   prefab5: {fileID: 6783076241034742239, guid: 64311e08748404641b24473f8438c605, type: 3}
   whatToSpawn: 0
