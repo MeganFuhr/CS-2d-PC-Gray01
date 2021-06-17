@@ -52,11 +52,12 @@ public class FinalScore : MonoBehaviour
             {
                 endGO[i].GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
             }
-            i++;
+            
             if (i == endGO.Length - 1)
             {
                 endScore -= endGO[i].GetComponent<Object_Controller>().value;
             }
+            i++;
         }
 
         ScoreText.text = endScore.ToString();

@@ -6,7 +6,7 @@ using TMPro;
 public class Counter : MonoBehaviour
 {
 
-    private float startTime = 60;
+    private float startTime = 15;
     public float currentTime = 0;
     private Canvas youLost;
     private GameObject go;

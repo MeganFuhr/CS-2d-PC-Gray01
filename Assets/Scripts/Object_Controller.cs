@@ -35,6 +35,8 @@ public class Object_Controller : MonoBehaviour
     private Rigidbody2D rb;
     private Collider2D col;
 
+    private Vector3 platformCenter;
+
     private void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
@@ -45,8 +47,8 @@ public class Object_Controller : MonoBehaviour
         youLost = go.transform.GetChild(0).gameObject.GetComponent<Canvas>();
         GameOver = GameObject.Find("/Bottom_Barrier").GetComponent<Bottom_Barrier>();
         endOfGame = GameOver.gameOver;
-        screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
-
+        //get spawned cat position so that I can get the Y
+        platformCenter = GameObject.Find("Platform_Spawner").GetComponent<Platform_Spawner>().go.GetComponent<PolygonCollider2D>().bounds.center;
         parentCounter = GameObject.Find("/Counter");
 
     }
@@ -85,7 +87,9 @@ public class Object_Controller : MonoBehaviour
                 return;
 
             this.gameObject.transform.localPosition = new Vector3(mousePos.x - startPosX, 4, 0);
-            rs.DrawLine(this.gameObject.transform.localPosition = new Vector3(mousePos.x - startPosX, 4, 0), new Vector3(mousePos.x + startPosX, end.y, 0));
+            //rs.DrawLine(this.gameObject.transform.localPosition = new Vector3(mousePos.x - startPosX, 4, 0), new Vector3(mousePos.x + startPosX, end.y, 0));
+            Debug.Log(platformCenter);
+            rs.DrawLine(this.gameObject.transform.localPosition = new Vector3(mousePos.x - startPosX, 4, 0), platformCenter);
 
         }
 
